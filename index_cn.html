@@ -3215,7 +3215,76 @@
         .lang-dropdown a:hover {
           background: var(--bg3);
         }
-      
+
+      /* ===== MOBILE HEADER / FOOTER FINAL OVERRIDE ===== */
+      .footer-langs {
+        display: none !important;
+      }
+
+      @media (max-width: 600px) {
+        nav {
+          height: 64px !important;
+          min-height: 64px !important;
+          padding: 0 12px !important;
+          gap: 8px !important;
+          flex-wrap: nowrap !important;
+          overflow: visible !important;
+        }
+
+        .nav-logo {
+          flex: 0 0 auto !important;
+        }
+
+        .nav-logo-text {
+          font-size: 18px !important;
+          letter-spacing: -0.8px !important;
+        }
+
+        .nav-tabs {
+          order: 0 !important;
+          width: auto !important;
+          flex: 1 1 auto !important;
+          min-width: 0 !important;
+          justify-content: space-between !important;
+        }
+
+        .nav-tab {
+          flex: 1 1 0 !important;
+          min-width: 0 !important;
+          padding: 8px 6px !important;
+          font-size: 13px !important;
+          text-align: center !important;
+        }
+
+        .nav-right {
+          display: none !important;
+        }
+
+        #nav-cta {
+          display: none !important;
+        }
+
+        footer {
+          display: block !important;
+        }
+
+        .footer-top {
+          align-items: flex-end !important;
+          text-align: right !important;
+        }
+
+        .footer-links {
+          width: 100% !important;
+          justify-content: flex-end !important;
+          text-align: right !important;
+        }
+
+        .footer-col {
+          align-items: flex-end !important;
+          text-align: right !important;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -9075,12 +9144,7 @@ CNergy Limited · 新西兰电力供应条款和条件 · 1.1 版 — 2026 年 5
       </div>
       <div class="footer-bottom">
         <p>© 2026 Stack Power Ltd T/A C+nergy. All rights reserved.</p>
-        <div class="footer-langs">
-          <button class="footer-lang-btn active">韩语</button>
-          <button class="footer-lang-btn">简体中文</button>
-          <button class="footer-lang-btn">English</button>
-        </div>
-      </div>
+</div>
     </footer>
 
     <script>
