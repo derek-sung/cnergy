@@ -3286,6 +3286,167 @@
         }
       }
 
+      /* ===== MOBILE LAYOUT REFINEMENTS ===== */
+      @media (max-width: 600px) {
+        nav {
+          height: 112px !important;
+          min-height: 112px !important;
+          padding: 12px 14px 10px !important;
+          display: flex !important;
+          flex-wrap: wrap !important;
+          justify-content: center !important;
+          align-content: center !important;
+          gap: 8px !important;
+          overflow: visible !important;
+        }
+
+        .nav-logo {
+          flex: 0 0 100% !important;
+          justify-content: center !important;
+        }
+
+        .nav-logo-text {
+          font-size: 21px !important;
+          letter-spacing: -0.7px !important;
+        }
+
+        .nav-tabs {
+          order: 2 !important;
+          width: calc(100% - 96px) !important;
+          max-width: 330px !important;
+          flex: 0 1 auto !important;
+          justify-content: space-between !important;
+          margin: 0 auto !important;
+        }
+
+        .nav-tab {
+          flex: 1 1 0 !important;
+          min-width: 0 !important;
+          padding: 8px 6px !important;
+          font-size: 13px !important;
+          text-align: center !important;
+        }
+
+        .nav-right {
+          display: flex !important;
+          position: absolute !important;
+          right: 14px !important;
+          bottom: 10px !important;
+          gap: 0 !important;
+          margin: 0 !important;
+        }
+
+        #nav-cta {
+          display: none !important;
+        }
+
+        .lang-menu {
+          display: block !important;
+          position: relative !important;
+        }
+
+        .lang-toggle {
+          width: 42px !important;
+          height: 42px !important;
+          padding: 0 !important;
+          justify-content: center !important;
+          border-radius: 50% !important;
+          font-size: 0 !important;
+          color: transparent !important;
+        }
+
+        .lang-toggle::before {
+          content: "🌐";
+          font-size: 20px;
+          color: var(--text);
+          line-height: 1;
+        }
+
+        .lang-dropdown {
+          right: 0 !important;
+          top: calc(100% + 8px) !important;
+        }
+
+        .hero,
+        .about-hero,
+        .faq-page-wrap {
+          padding-top: 112px !important;
+        }
+
+        .about-section,
+        .ecosystem-section,
+        .hiring-section {
+          padding-left: 24px !important;
+          padding-right: 24px !important;
+        }
+
+        .orbit-wrap {
+          height: 520px !important;
+          overflow: hidden !important;
+        }
+
+        .team-bg {
+          padding: 32px 24px !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          gap: 28px !important;
+        }
+
+        .team-bg-text p {
+          max-width: 100% !important;
+        }
+
+        .team-bg-tags {
+          width: 100% !important;
+          justify-content: center !important;
+          align-items: center !important;
+          gap: 10px !important;
+        }
+
+        .team-tag {
+          flex: 0 1 auto !important;
+          text-align: center !important;
+        }
+
+        .faq-hero {
+          padding: 64px 24px 48px !important;
+        }
+
+        .faq-hero-title {
+          font-size: 42px !important;
+          letter-spacing: -1.2px !important;
+          line-height: 1.1 !important;
+        }
+
+        .faq-layout {
+          padding: 0 24px 80px !important;
+          gap: 32px !important;
+        }
+
+        .faq-sidebar {
+          position: static !important;
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          gap: 8px !important;
+          overflow-x: auto !important;
+          padding-bottom: 8px !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+
+        .faq-cat-btn {
+          flex: 0 0 auto !important;
+          width: auto !important;
+          min-width: max-content !important;
+          padding: 10px 14px !important;
+          font-size: 13px !important;
+          white-space: nowrap !important;
+          word-break: keep-all !important;
+          writing-mode: horizontal-tb !important;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -9263,12 +9424,18 @@
         let nodes = [];
 
         function buildLayout() {
+          const mobileOrbit = W < 620;
+          const maxRadius = mobileOrbit
+            ? Math.max(120, Math.min(W, H) * 0.32)
+            : 280;
+          const baseTiers = [220, 265, 230, 270, 250, 240, 280, 255, 235, 270];
+          const tierScale = mobileOrbit ? maxRadius / 280 : 1;
           nodes = NODE_DEFS.map((def, i) => {
             const goldenAngle = 2.399963;
             const baseAngle = i * goldenAngle;
-            const tiers = [220, 265, 230, 270, 250, 240, 280, 255, 235, 270];
+            const tiers = baseTiers.map((tier) => tier * tierScale);
             const r = tiers[i % tiers.length];
-            const jitter = ((i * 137 + 31) % 60) - 30;
+            const jitter = mobileOrbit ? 0 : ((i * 137 + 31) % 60) - 30;
             const angleJitter = (((i * 53 + 17) % 40) - 20) * (Math.PI / 180);
             const tx = cx + Math.cos(baseAngle + angleJitter) * (r + jitter);
             const ty =
