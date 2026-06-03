@@ -871,6 +871,19 @@
         .footer-top {
           flex-direction: column;
         }
+        .scroll-container {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          padding: 100px 0;
+        }
+        .scroll-img {
+          width: 260px;
+          height: auto;
+          transition: translateY(100px);
+        }
       }
     </style>
   </head>
@@ -1075,7 +1088,7 @@
 
         <div class="scroll-container">
           <img
-            src="your-image-url.png"
+            src="https://raw.githubusercontent.com/derek-sung/cnergy/main/app_1.png"
             alt="스크롤 이미지"
             class="scroll-img"
           />
@@ -1224,6 +1237,22 @@
         },
         { passive: true },
       );
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(".scroll-img", {
+        translateY: -60,
+        scrollTrigger: {
+          trigger: ".scroll-container",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
     </script>
   </body>
 </html>
