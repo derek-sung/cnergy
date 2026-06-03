@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C+nergy — FAQ</title>
+    <link
+      rel="preconnect"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <style>
+      :root {
+        --blue: #3182f5;
+        --blue-hover: #2563d4;
+        --blue-light: #eff4ff;
+        --blue-pale: #f5f8ff;
+        --green: #05c072;
+        --green-bg: #edfbf4;
+        --text: #191f28;
+        --text2: #8f959d;
+        --text3: #94a3b8;
+        --border: #e8edf3;
+        --white: #ffffff;
+        --bg-section: #f7f9fc;
+        --r: 16px;
+        --r-lg: 24px;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 200;
+        height: 60px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        transition: border-color 0.2s;
+      }
+      .nav-logo {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .nav-logo em { color: var(--blue); font-style: normal; }
+      .nav-btn {
+        padding: 9px 22px;
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.18s, transform 0.15s;
+        display: inline-flex;
+        align-items: center;
+      }
+      .nav-btn:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+      /* ─── HERO ─── */
+      .page-hero {
+        padding: 120px 40px 56px;
+        text-align: center;
+        background: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 800px; height: 400px;
+        background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(18,73,233,0.05) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .page-hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--blue);
+        margin-bottom: 20px;
+      }
+      .page-hero-kicker::before {
+        content: "";
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .page-hero h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.2;
+        color: var(--text);
+        margin-bottom: 14px;
+      }
+      .page-hero-sub {
+        font-size: 15px;
+        color: var(--text2);
+        line-height: 1.65;
+      }
+
+      /* ─── BACK BUTTON ─── */
+      .back-wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 40px 8px;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text2);
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: inherit;
+        padding: 8px 0;
+        transition: color 0.18s;
+      }
+      .back-btn:hover { color: var(--blue); }
+      .back-btn svg { transition: transform 0.18s; }
+      .back-btn:hover svg { transform: translateX(-3px); }
+
+      /* ─── LAYOUT ─── */
+      .faq-wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      /* ─── SIDEBAR ─── */
+      .faq-sidebar {
+        position: sticky;
+        top: 84px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .faq-cat-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 14px;
+        border-radius: 10px;
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text2);
+        cursor: pointer;
+        text-align: left;
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+      .faq-cat-btn:hover { background: var(--bg-section); color: var(--text); }
+      .faq-cat-btn.active {
+        background: var(--blue-light);
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .faq-cat-dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
+        opacity: 0.5;
+      }
+      .faq-cat-btn.active .faq-cat-dot { opacity: 1; }
+
+      /* ─── FAQ CONTENT ─── */
+      .faq-content { min-width: 0; }
+      .faq-section { display: none; }
+      .faq-section.active { display: block; }
+
+      .faq-section-title {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+
+      .faq-list {
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .faq-item:last-child { border-bottom: none; }
+      .faq-item:hover { background: var(--bg-section); }
+      .faq-item.open { background: var(--blue-pale); }
+
+      .faq-q {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 24px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .faq-item.open .faq-q { color: var(--blue); }
+
+      .faq-icon {
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--text3);
+        flex-shrink: 0;
+        line-height: 1;
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.15s;
+      }
+      .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--blue); }
+
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .faq-item.open .faq-a { max-height: 800px; }
+      .faq-a-inner {
+        padding: 0 24px 20px;
+        font-size: 14px;
+        color: var(--text2);
+        line-height: 1.8;
+      }
+      .faq-a-inner a {
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .faq-a-inner a:hover { text-decoration: underline; }
+      .faq-a-inner strong { color: var(--text); font-weight: 700; }
+
+      /* ─── BOTTOM CTA ─── */
+      .faq-cta {
+        background: var(--bg-section);
+        border-top: 1px solid var(--border);
+        padding: 64px 40px;
+        text-align: center;
+      }
+      .faq-cta-inner { max-width: 480px; margin: 0 auto; }
+      .faq-cta h2 {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        color: var(--text);
+        margin-bottom: 12px;
+      }
+      .faq-cta p {
+        font-size: 15px;
+        color: var(--text2);
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+      .faq-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.18s, transform 0.15s;
+      }
+      .faq-cta-btn:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+      /* ─── FOOTER ─── */
+      footer {
+        padding: 48px 40px 40px;
+        background: var(--bg-section);
+        border-top: 1px solid var(--border);
+      }
+      .footer-inner { max-width: 960px; margin: 0 auto; }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 32px;
+        margin-bottom: 32px;
+      }
+      .footer-logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+      .footer-logo em { color: var(--blue); font-style: normal; }
+      .footer-tagline { font-size: 13px; color: var(--text3); line-height: 1.6; }
+      .footer-links { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+      .footer-links a {
+        font-size: 13px;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover { color: var(--blue); }
+      .footer-links a.active { color: var(--blue); font-weight: 600; }
+      .footer-copy {
+        font-size: 12px;
+        color: var(--text3);
+        line-height: 1.7;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        nav { padding: 0 20px; }
+        .page-hero { padding: 100px 20px 48px; }
+        .back-wrap { padding: 0 20px 8px; }
+        .faq-wrap {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding: 0 20px 60px;
+        }
+        .faq-sidebar {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .faq-cat-btn {
+          flex: none;
+          padding: 8px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--border);
+          font-size: 13px;
+        }
+        .faq-cat-btn.active { border-color: var(--blue); }
+        .faq-cat-dot { display: none; }
+        .faq-q { padding: 16px 20px; font-size: 14px; }
+        .faq-a-inner { padding: 0 20px 16px; }
+        .faq-cta { padding: 48px 20px; }
+        footer { padding: 40px 20px; }
+        .footer-top { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav id="main-nav">
+      <a href="cnergy-winback__1_.html" class="nav-logo">C<em>+</em>nergy</a>
+      <a href="https://cnergy.softr.app/application-consumer" class="nav-btn">지금 시작하기</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="page-hero">
+      <div class="page-hero-kicker">C+nergy · FAQ</div>
+      <h1>무엇이 궁금하신가요?</h1>
+      <p class="page-hero-sub">C+nergy 서비스에 대해 자주 묻는 질문들을 모았습니다.</p>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="back-wrap">
+      <button class="back-btn" onclick="history.back()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        이전 페이지로 돌아가기
+      </button>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="faq-wrap">
+
+      <!-- SIDEBAR -->
+      <nav class="faq-sidebar">
+        <button class="faq-cat-btn active" onclick="switchCat('signup', this)">
+          <span class="faq-cat-dot"></span>가입 · 전환
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('billing', this)">
+          <span class="faq-cat-dot"></span>요금 · 결제
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('meter', this)">
+          <span class="faq-cat-dot"></span>스마트미터 · 앱
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('plan', this)">
+          <span class="faq-cat-dot"></span>요금제
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('biz', this)">
+          <span class="faq-cat-dot"></span>비즈니스
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('account', this)">
+          <span class="faq-cat-dot"></span>계정 · 개인정보
+        </button>
+        <button class="faq-cat-btn" onclick="switchCat('dispute', this)">
+          <span class="faq-cat-dot"></span>장애 · 분쟁
+        </button>
+      </nav>
+
+      <!-- FAQ CONTENT -->
+      <div class="faq-content">
+
+        <!-- 가입 · 전환 -->
+        <div class="faq-section active" id="faq-cat-signup">
+          <h2 class="faq-section-title">가입 · 전환</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">C+nergy로 바꾸려면 어떻게 하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <strong>'지금 시작하기'</strong> 버튼을 클릭하면 가입 신청 페이지로 연결됩니다.<br><br>
+                주소와 기본 정보를 입력하시면 쓰시던 전기 서비스를 끊김없이 사용하실 수 있도록 담당 직원이 모든 절차를 진행해 드립니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">현재 사용중인 전기 회사에 직접 연락해야 하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                서비스 업체 전환에 필요한 업무는 저희가 진행해 드리지만, 기존 전기 회사와의 계약 상태에 따라 고객님께서 직접 연락하셔야 하는 경우(예: 기존 계약기간이 남아있는 경우)가 있을 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">가입 후 서비스 시작까지 얼마나 걸리나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                신규 가입 또는 전기 서비스 이전 신청이 완료되면, 일반적으로 요청하신 시작일에 맞춰 공급이 진행됩니다. 간혹 일부 주소의 경우 네트워크 또는 미터기 상태 확인이 추가로 필요할 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">스마트 미터가 없어도 가입할 수 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                네, 가입 가능합니다. 단, 실시간 사용량 모니터링 기능은 스마트 미터가 설치된 경우에만 이용하실 수 있습니다. 스마트 미터 교체는 무료로 진행해 드리며, 설치 일정은 미터기 회사와 조율 후 안내해 드립니다.<br><br>
+                설치 과정에서 미터 박스의 크기나 위치에 따라 추가 작업이 필요한 경우 비용 관련하여 집 소유주와 협의가 필요할 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">계약 기간이 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                가정용 전기 서비스는 현재 무약정으로 제공되지만, 향후 요금제에 따라 고정 계약 상품이 제공될 수 있습니다. 계약 기간이 있는 요금제는 가입 시 명확히 안내드리며, 계약 조건에 따라 조기 해지 시 위약금이 발생할 수 있습니다. 자세한 내용은 가입 신청 과정에서 확인하실 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">명의 변경이 가능한가요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                가능합니다. 고객센터를 통해 신청할 수 있으며, 일부 본인 확인 서류가 요청될 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">임차인(세입자)도 전기 회사를 바꿀 수 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                네, 임차인도 직접 전기 회사를 선택할 수 있습니다. 전기 계약은 임차인 명의로 진행되므로 집주인의 동의 없이 전환 가능합니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">뉴질랜드 전역에서 서비스가 가능한가요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                현재는 Auckland 지역(Vector 서비스 지역)을 중심으로 서비스를 제공하고 있으며, 순차적으로 전국으로 확대할 예정입니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 요금 · 결제 -->
+        <div class="faq-section" id="faq-cat-billing">
+          <h2 class="faq-section-title">요금 · 결제</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">요금은 어떻게 청구되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                매월 말일 기준으로 사용량을 정산하여 익월 초에 청구됩니다. 등록하신 신용카드 또는 직불카드로 자동 결제되며, 청구서는 등록하신 이메일 주소로 발송됩니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">요금이 예상보다 많이 나왔습니다. 어떻게 해야 하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                이상이 있다고 판단되시면 이메일(<a href="mailto:support@cnergy.co.nz">support@cnergy.co.nz</a>)로 문의해 주세요. 또한 스마트 미터 리딩이 지원되지 않는 레거시 미터의 경우 실제 사용량과 청구된 사용량이 다를 수 있습니다. 이런 경우에도 고객센터로 연락주시면 자세히 안내해 드리겠습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">연체하면 어떻게 되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                결제일로부터 7일 내에 납부되지 않으면 문자와 이메일로 안내가 발송됩니다. 30일 이상 연체 시 <strong>공급 중단 절차가 진행될 수 있으니,</strong> 납부가 어려우신 경우 사전에 고객센터로 연락해 주시면 분할 납부 등 지원 가능한 옵션을 함께 안내해 드리겠습니다. 또한 상시 전기 공급이 필요한 경우(Medically Dependent) 고객센터로 연락주시면 별도의 지원 방안을 안내해 드립니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">결제 수단을 변경하고 싶습니다.<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                현재는 계좌이체를 통한 결제만 가능합니다. 향후 신용카드, 직불카드 등 다양한 결제 수단을 지원할 예정입니다. 계좌이체 정보는 청구서에 명시되어 있으며, 납부 시 고객님의 레퍼런스 번호를 꼭 기재해 주세요.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">가격 변동이 있나요? 사전에 알려주나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                요금 변경 시 최소 30일 전에 이메일과 앱 알림으로 사전 고지합니다. Commerce Commission 규정에 따라 충분한 사전 안내 후에만 요금이 변경됩니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 스마트미터 · 앱 -->
+        <div class="faq-section" id="faq-cat-meter">
+          <h2 class="faq-section-title">스마트미터 · 앱</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">스마트 미터가 무엇인가요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <strong>스마트 미터</strong>는 전기 사용량을 원격으로 자동 전송하여 별도의 방문 검침 없이 보다 정확한 사용량 확인이 가능한 디지털 전기 계량기입니다. 저희는 스마트 미터가 설치된 고객에게 30분 단위의 실시간 사용량을 제공해 드리며, 사용량 변화에 대한 알림도 지원할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">실시간 사용량은 얼마나 자주 업데이트되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                스마트 미터 데이터는 30분 단위로 업데이트됩니다. 이후 제공될 앱에서 오늘 사용량, 전월 대비, AI 예측 청구금액을 실시간으로 확인하실 수 있습니다. 또한 급격한 사용량 변화에 대한 알림도 지원할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">앱은 어떤 기기에서 사용할 수 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                고객님의 핸드폰이나 태블릿에서 사용하실 수 있는 앱을 개발 중에 있습니다. 애플 iOS와 구글 안드로이드 플랫폼 모두 순차적으로 지원할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">AI 절약 추천은 어떻게 작동하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                AI가 고객의 과거 사용 패턴, 시간대별 요금, 가족 구성, 이웃 비교 등을 분석하여 다양한 절약 팁을 제공할 예정입니다. 열심히 앱을 개발 중에 있으며, 2026년 하반기에 출시할 계획입니다. 자세한 내용은 앱 출시 뉴스와 함께 안내해 드리겠습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">앱 알림은 어떤 것들이 오나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                사용량 이상 감지, 월 청구 예상 금액 초과 알림, 납부 안내, 정전 공지, AI 절약 팁 등이 발송될 예정입니다. 앱 출시 후 고객 피드백을 반영하여 알림 종류와 빈도를 조정할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">앱이 한국어만 지원하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                아니요. 한국어, 중국어(간체), 영어를 모두 지원합니다. 앱 설정에서 언제든지 언어를 변경하실 수 있으며, 추가 언어도 계속해서 지원할 예정입니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 요금제 -->
+        <div class="faq-section" id="faq-cat-plan">
+          <h2 class="faq-section-title">요금제</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">요금제 종류는 어떻게 되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                현재 고정 단가 요금제(Flat Rate)를 제공 중이며, 이후 시간대별 차등 요금제(Time of Use)를 제공할 예정입니다. 요금제 변경을 쉽고 빠르게 할 수 있는 앱을 개발 중에 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">요금제는 언제든지 바꿀 수 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                현재는 고정 단가 요금제(Flat Rate)이기 때문에 변경할 요금제가 없지만, 사용량에 따라 Low User/Standard 요금제 변경은 가능합니다. 고객센터로 문의 주시면 절차 안내해 드리겠습니다. 향후 시간대별 차등 요금제(Time of Use)가 출시되면 앱에서 직접 요금제를 비교하고 변경할 수 있도록 지원할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">계약 기간이 있나요? 위약금은요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                C+nergy의 가정용 전기 서비스는 위약금 없이 언제든지 해지 가능합니다. 해지 요청 후 새로운 전기 회사로 전환될 때까지 기존 전기 서비스를 계속 이용하실 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">타사 대비 요금이 저렴한가요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                C+nergy는 시장 최저 수준의 요금제를 운영합니다. 글로벌 소프트웨어 및 IT 대기업 출신의 창업자들이 기술과 데이터 분석을 활용하여 운영 효율성을 극대화하여 인력 및 인프라 고정비를 낮춰 고객에게 더 나은 요금을 제공하기 위해 노력하고 있습니다. 또한, AI 절약 팁과 실시간 사용량 모니터링을 통해 고객 역시 전기 요금을 절약할 수 있도록 지원할 예정입니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 비즈니스 -->
+        <div class="faq-section" id="faq-cat-biz">
+          <h2 class="faq-section-title">비즈니스</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">비즈니스 광고 플랜이란 무엇인가요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                C+nergy 비즈니스 전기 상품을 구독하면 앱 이용자 피드에 비즈니스 정보가 자동으로 노출되는 구조입니다. 전기 요금을 내면서 동시에 일정 수준의 마케팅 효과를 얻을 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">광고 플랜 없이 전기만 쓸 수도 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                네, 비즈니스 기본 전기 상품만 이용하실 수도 있습니다. 광고 노출은 Starter($49/월) 또는 Growth($129/월) 플랜 가입 시에 제공됩니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">학교나 비영리단체도 이용할 수 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                네. C+nergy 앱에 기부 캠페인을 무료로 등록하고, 이용자들이 $1~$5 토큰으로 간편하게 기부할 수 있도록 지원합니다. 수수료 없이 모금액 전액이 단체에 전달됩니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">광고 성과는 어떻게 확인하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                비즈니스 대시보드에서 노출 수, 클릭 수, 딜 전환율을 실시간으로 확인하실 수 있습니다. 월별 리포트도 제공할 예정입니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">비즈니스 등록에 필요한 서류가 있나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                사업자 등록증, 주소, 대표자 정보, NZ 계좌(또는 카드)가 필요합니다. 비영리단체의 경우 등록 증빙 서류가 추가로 필요할 수 있습니다. 가입 신청 시 필요한 서류 목록과 제출 방법은 <a href="mailto:sales@cnergy.co.nz">sales@cnergy.co.nz</a>로 이메일을 보내주시면 자세히 안내해 드리겠습니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 계정 · 개인정보 -->
+        <div class="faq-section" id="faq-cat-account">
+          <h2 class="faq-section-title">계정 · 개인정보</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">개인정보는 어떻게 보호되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                C+nergy는 뉴질랜드 Privacy Act 2020을 준수하며 고객 데이터를 안전하게 관리합니다. 에너지 사용 데이터는 요금 청구 및 서비스 개선 목적으로만 사용되며, 제3자에게 판매하지 않습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">서비스를 해지하면 데이터는 어떻게 되나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                계약 해지 후에도 관련 법령 및 규제 준수를 위해 일부 거래 및 계정 정보는 일정 기간 보관될 수 있습니다. 마케팅 목적의 선택적 정보는 관련 법령 및 내부 정책에 따라 삭제 또는 비식별 처리될 수 있습니다. 고객은 개인정보 열람, 수정 또는 삭제를 요청할 수 있으며, 일부 정보는 법적 의무에 따라 보관이 필요할 수 있습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">연락처나 주소가 바뀌었습니다.<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                고객센터(<a href="mailto:support@cnergy.co.nz">support@cnergy.co.nz</a>)로 이메일을 보내주시면 변경 절차를 안내해 드립니다. 주소 변경의 경우, 서비스 제공 가능 여부를 확인하기 위해 추가 정보가 필요할 수 있습니다.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 장애 · 분쟁 -->
+        <div class="faq-section" id="faq-cat-dispute">
+          <h2 class="faq-section-title">장애 · 분쟁</h2>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">전기가 끊겼어요. 어떻게 해야 하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                전기 공급 장애가 발생한 경우, Vector <a href="https://help.vector.co.nz/map" target="_blank" rel="noopener noreferrer">장애 안내 페이지</a>에서 실시간으로 장애 상황과 예상 복구 시간을 확인하실 수 있습니다. 개별적 장애 신고는 Vector 고객센터(<strong>0800 802 632</strong>)로 연락해 주세요. Auckland 지역의 C+nergy를 포함한 모든 전기 회사는 Vector의 인프라를 사용하여 전기를 공급하기 때문에, 장애 신고 및 복구는 Vector를 통해 이루어집니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">미터기가 고장난 것 같아요.<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                고객센터로 연락 주시면 확인 후 필요한 조치를 안내해 드립니다. 스마트 미터의 경우, 원격 진단을 통해 문제를 파악할 수 있으며, 필요 시 기술자가 방문하여 수리 또는 교체를 진행합니다. 레거시 미터의 경우에도 유사한 절차로 진행됩니다. 미터 고장으로 인해 사용량이 정확히 측정되지 않는 경우, 청구 금액이 실제 사용량과 다를 수 있으니 빠르게 연락 주시는 것이 좋습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">불만 사항은 어떻게 접수하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                고객센터 이메일(<a href="mailto:support@cnergy.co.nz">support@cnergy.co.nz</a>)로 문의하실 수 있으며, 영업일 기준 2일 내에 접수를 확인해 드리고 5~10일 내에 해결 방안을 제시해 드립니다. 고객님의 불만 사항을 신속하고 공정하게 처리하기 위해 최선을 다하겠습니다.
+              </div></div>
+            </div>
+            <div class="faq-item" onclick="toggleItem(this)">
+              <div class="faq-q">문제가 해결되지 않으면 어떻게 하나요?<span class="faq-icon">+</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                분쟁 접수일로부터 영업일 기준 20일이 경과할 때까지 문제가 해결되지 않는 경우, <a href="https://www.udl.co.nz/" target="_blank" rel="noopener noreferrer">Utilities Disputes</a>에 분쟁 해결을 요청할 수 있습니다. 해당 기관은 독립적인 제3자 기관으로, 전기 및 가스 관련 분쟁을 공정하게 중재합니다. 자세한 내용은 고객센터로 문의해 주세요.
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /faq-content -->
+    </div><!-- /faq-wrap -->
+
+    <!-- BOTTOM CTA -->
+    <div class="faq-cta">
+      <div class="faq-cta-inner">
+        <h2>찾는 답변이 없으신가요?</h2>
+        <p>고객센터로 문의하시면 영업일 기준 1일 내 답변 드립니다.</p>
+        <a href="mailto:support@cnergy.co.nz" class="faq-cta-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M2 4l6 5 6-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          이메일 문의
+        </a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div class="footer-logo">C<em>+</em>nergy</div>
+            <div class="footer-tagline">
+              Stack Power Ltd T/A C+nergy<br>
+              뉴질랜드 전기 리테일러 라이선스 보유 · Auckland 서비스 지역
+            </div>
+          </div>
+          <div class="footer-links">
+            <a href="mailto:support@cnergy.co.nz">고객 지원</a>
+            <a href="terms.html">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="faq.html" class="active">FAQ</a>
+          </div>
+        </div>
+        <div class="footer-copy">
+          © 2026 Stack Power Ltd T/A C+nergy. All rights reserved.<br>
+          전기 공급 관련 불만은 Utilities Disputes Ltd (0800 22 33 40 · www.utilitiesdisputes.co.nz)에 접수 가능합니다.<br>
+          현재 서비스 지역: Auckland (Vector 네트워크, Wellsford ~ Papakura). 요금은 지역·요금제에 따라 상이할 수 있습니다.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function switchCat(id, btn) {
+        document.querySelectorAll('.faq-section').forEach(s => s.classList.remove('active'));
+        document.getElementById('faq-cat-' + id).classList.add('active');
+        document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      function toggleItem(el) {
+        const isOpen = el.classList.contains('open');
+        el.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) el.classList.add('open');
+      }
+
+      // Nav border on scroll
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 20 ? '#e8edf3' : 'transparent';
+      }, { passive: true });
+    </script>
+  </body>
+</html>

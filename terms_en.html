@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C+nergy — 이용약관</title>
+    <link
+      rel="preconnect"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <style>
+      :root {
+        --blue: #3182f5;
+        --blue-hover: #2563d4;
+        --blue-light: #eff4ff;
+        --blue-pale: #f5f8ff;
+        --green: #05c072;
+        --green-bg: #edfbf4;
+        --text: #191f28;
+        --text2: #8f959d;
+        --text3: #94a3b8;
+        --border: #e8edf3;
+        --white: #ffffff;
+        --bg-section: #f7f9fc;
+        --r: 16px;
+        --r-lg: 24px;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 200;
+        height: 60px;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+      }
+      .nav-logo {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .nav-logo em { color: var(--blue); font-style: normal; }
+      .nav-btn {
+        padding: 9px 22px;
+        background: var(--blue);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.18s, transform 0.15s;
+      }
+      .nav-btn:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+      /* ─── PAGE HERO ─── */
+      .page-hero {
+        padding: 120px 40px 64px;
+        text-align: center;
+        background: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 800px; height: 400px;
+        background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(18,73,233,0.05) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .page-hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--blue);
+        letter-spacing: 0.3px;
+        margin-bottom: 20px;
+      }
+      .page-hero-kicker::before {
+        content: "";
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .page-hero h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.2;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+      .page-hero-sub {
+        font-size: 15px;
+        color: var(--text2);
+        line-height: 1.65;
+      }
+
+      /* ─── BACK BUTTON ─── */
+      .back-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 40px 8px;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text2);
+        text-decoration: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: inherit;
+        padding: 8px 0;
+        transition: color 0.18s;
+      }
+      .back-btn:hover { color: var(--blue); }
+      .back-btn svg { transition: transform 0.18s; }
+      .back-btn:hover svg { transform: translateX(-3px); }
+
+      /* ─── TERMS WRAP ─── */
+      .terms-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+      }
+
+      /* ─── TERMS DOC ─── */
+      .terms-doc {
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        margin-bottom: 16px;
+        transition: box-shadow 0.2s;
+      }
+      .terms-doc:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+      .terms-doc-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 28px;
+        background: var(--white);
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        transition: background 0.15s;
+        font-family: inherit;
+      }
+      .terms-doc-header:hover { background: var(--bg-section); }
+      .terms-doc.open .terms-doc-header { background: var(--bg-section); }
+      .terms-doc-header-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .terms-doc-num {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        background: var(--blue-light);
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .terms-doc-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 3px;
+      }
+      .terms-doc-sub {
+        font-size: 12px;
+        color: var(--text3);
+        font-weight: 500;
+      }
+      .terms-doc-arrow {
+        font-size: 22px;
+        color: var(--text3);
+        font-weight: 300;
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .terms-doc.open .terms-doc-arrow { transform: rotate(90deg); }
+
+      /* ─── TERMS DOC BODY ─── */
+      .terms-doc-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        border-top: 0px solid var(--border);
+      }
+      .terms-doc.open .terms-doc-body {
+        max-height: 9999px;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ─── ACCORDION ─── */
+      .terms-accordion { padding: 8px 0; }
+      .terms-item {
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+      }
+      .terms-item:last-child { border-bottom: none; }
+      .terms-q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 28px;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        cursor: pointer;
+        text-align: left;
+        transition: background 0.15s, color 0.15s;
+        gap: 12px;
+      }
+      .terms-q:hover { background: var(--bg-section); color: var(--blue); }
+      .terms-item.open .terms-q { color: var(--blue); }
+      .terms-icon {
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--text3);
+        flex-shrink: 0;
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.15s;
+        line-height: 1;
+      }
+      .terms-item.open .terms-icon { transform: rotate(45deg); color: var(--blue); }
+      .terms-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .terms-item.open .terms-body { max-height: 9999px; }
+      .terms-body-inner {
+        padding: 4px 28px 24px;
+      }
+      .terms-body p {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--text2);
+        margin-bottom: 12px;
+      }
+      .terms-body p:last-child { margin-bottom: 0; }
+      .terms-sub-heading {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        margin-top: 16px;
+        margin-bottom: 6px !important;
+      }
+      .terms-sub-heading:first-child { margin-top: 0; }
+
+      /* ─── KSP TABLE ─── */
+      .ksp-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin: 12px 0;
+      }
+      .ksp-table td {
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        color: var(--text2);
+        vertical-align: top;
+        line-height: 1.6;
+      }
+      .ksp-table td:first-child {
+        font-weight: 600;
+        color: var(--text);
+        width: 36%;
+        background: var(--bg-section);
+      }
+      .ksp-table a { color: var(--blue); text-decoration: none; }
+      .ksp-table a:hover { text-decoration: underline; }
+      .ksp-section-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--text3);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        margin-bottom: 8px;
+      }
+      .ksp-note {
+        font-size: 12px;
+        color: var(--text3);
+        font-style: italic;
+        margin-top: 12px;
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        padding: 48px 40px 40px;
+        background: var(--bg-section);
+        border-top: 1px solid var(--border);
+      }
+      .footer-inner { max-width: 960px; margin: 0 auto; }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 32px;
+        margin-bottom: 32px;
+      }
+      .footer-logo {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+      }
+      .footer-logo em { color: var(--blue); font-style: normal; }
+      .footer-tagline {
+        font-size: 13px;
+        color: var(--text3);
+        line-height: 1.6;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .footer-links a {
+        font-size: 13px;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover { color: var(--blue); }
+      .footer-links a.active { color: var(--blue); font-weight: 600; }
+      .footer-copy {
+        font-size: 12px;
+        color: var(--text3);
+        line-height: 1.7;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        nav { padding: 0 20px; }
+        .page-hero { padding: 100px 20px 48px; }
+        .back-wrap { padding: 0 20px 8px; }
+        .terms-wrap { padding: 0 20px 60px; }
+        .terms-doc-header { padding: 18px 20px; }
+        .terms-q { padding: 16px 20px; }
+        .terms-body-inner { padding: 4px 20px 20px; }
+        footer { padding: 40px 20px; }
+        .footer-top { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav>
+      <a href="cnergy-winback__1_.html" class="nav-logo">C<em>+</em>nergy</a>
+      <a href="https://cnergy.softr.app/application-consumer" class="nav-btn">지금 시작하기</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="page-hero">
+      <div class="page-hero-kicker">C+nergy · Legal</div>
+      <h1>이용약관</h1>
+      <p class="page-hero-sub">Cnergy Limited · 뉴질랜드 전기 공급 약관 · Version 1.1 — May 2026</p>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="back-wrap">
+      <button class="back-btn" onclick="history.back()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        이전 페이지로 돌아가기
+      </button>
+    </div>
+
+    <!-- TERMS CONTENT -->
+    <div class="terms-wrap">
+
+      <!-- 01 GENERAL TERMS -->
+      <div class="terms-doc" id="terms-doc-general">
+        <button class="terms-doc-header" onclick="toggleDoc('general')">
+          <div class="terms-doc-header-left">
+            <div class="terms-doc-num">01</div>
+            <div>
+              <div class="terms-doc-title">General Terms and Conditions</div>
+              <div class="terms-doc-sub">All Customers · Version 1.1 · May 2026</div>
+            </div>
+          </div>
+          <span class="terms-doc-arrow">›</span>
+        </button>
+        <div class="terms-doc-body">
+          <div class="terms-accordion">
+
+            <div class="terms-item" id="general-0">
+              <button class="terms-q" onclick="toggleTerms('general-0')">
+                <span>1. Definitions</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>In these General Terms and Conditions:</p>
+                <p>"Agreement" means these General Terms, your applicable Specific Terms, and your Pricing Plan, together forming the contract between you and Cnergy.</p>
+                <p>"Authority" or "EA" means the Electricity Authority established under the Electricity Industry Act 2010.</p>
+                <p>"Code" means the Electricity Industry Participation Code 2010, as amended from time to time.</p>
+                <p>"ICP" means an Installation Control Point — the unique identifier assigned to your electricity connection point.</p>
+                <p>"Pricing Plan" means the rates, charges, and plan details applicable to your electricity supply as notified to you.</p>
+                <p>"Service Area" means the Auckland region from Wellsford to Papakura, being the area served by Vector Limited's distribution network.</p>
+                <p>"Cnergy", "we", "us", or "our" means Cnergy Limited (NZBN: [INSERT]).</p>
+                <p>"You" or "your" means the customer named on the account.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-1">
+              <button class="terms-q" onclick="toggleTerms('general-1')">
+                <span>2. Supply of Electricity</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">2.1 Our Obligation</p>
+                <p>We will arrange for the supply of electricity to your property through the distribution network operated by Vector Limited (or such other network company as applies to your property), subject to these General Terms and your applicable Specific Terms.</p>
+                <p class="terms-sub-heading">2.2 Service Area</p>
+                <p>We supply electricity only within our Service Area. We may decline to supply, or may terminate supply, if your property falls outside the Service Area.</p>
+                <p class="terms-sub-heading">2.3 Network Company</p>
+                <p>The distribution network is owned and operated by Vector Limited. We are responsible for arranging your electricity supply as your retailer; we are not responsible for the physical network infrastructure. For faults, outages, or network emergencies, contact Vector Limited directly on 0508 832 867.</p>
+                <p class="terms-sub-heading">2.4 Smart Meters</p>
+                <p>We require a compatible smart meter at your property to provide electricity supply. If your property does not have a compatible smart meter, we will arrange for installation. If installation is not practicable at your property despite reasonable efforts and after consultation with you, we may transfer your ICP to another retailer on no less than 5 Business Days' written notice.</p>
+                <p class="terms-sub-heading">2.5 ICP Identifier</p>
+                <p>Your ICP identifier will be printed on every invoice and clearly labelled 'ICP'. If you wish to know your ICP identifier at any time, contact us and we will provide it within 3 Business Days of your request, at no charge.</p>
+                <p class="terms-sub-heading">2.6 Quality of Supply</p>
+                <p>We will take all reasonable steps to ensure continuity of supply. However, supply may be interrupted for planned maintenance, emergency works, or events beyond our reasonable control.</p>
+                <p class="terms-sub-heading">2.7 Force Majeure</p>
+                <p>We are not liable for failure to supply electricity caused by events genuinely beyond our reasonable control, including acts of God, natural disasters, government actions, grid failure, or unforeseeable physical damage to the network infrastructure not caused by foreseeable maintenance failure. Planned outages, foreseeable maintenance failures, and events within the reasonable control of Vector Limited do not constitute force majeure for the purpose of our service level obligations to you.</p>
+                <p class="terms-sub-heading">2.8 Service Levels and Compensation</p>
+                <p>Where we fail to meet a service level obligation due to our fault (not force majeure), we will notify you and, where required by the Code or applicable regulations, provide appropriate compensation or remedy.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-2">
+              <button class="terms-q" onclick="toggleTerms('general-2')">
+                <span>3. Your Obligations</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">3.1 Access</p>
+                <p>You must provide safe, unobstructed access to your meter and metering equipment at all reasonable times for reading, inspection, maintenance, and disconnection purposes. You must not obstruct, damage, or tamper with any metering equipment.</p>
+                <p class="terms-sub-heading">3.2 Accurate Information</p>
+                <p>You must provide accurate and complete information when applying for supply and must notify us promptly of any changes to your contact details, address, or other material information.</p>
+                <p class="terms-sub-heading">3.3 Responsible Use</p>
+                <p>You must not use electricity in a way that is unsafe, illegal, or likely to damage the network or metering equipment. You are responsible for all electricity consumed at your ICP from the date supply commences.</p>
+                <p class="terms-sub-heading">3.4 Notification of Change</p>
+                <p>You must notify us as soon as reasonably practicable if you intend to vacate your property, change its use, or make any change that may materially affect your electricity consumption.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-3">
+              <button class="terms-q" onclick="toggleTerms('general-3')">
+                <span>4. Your Account</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">4.1 Account Holder</p>
+                <p>You are the account holder and are responsible for all charges on your account. Where more than one person is named on an account, each person is jointly and severally liable for all obligations.</p>
+                <p class="terms-sub-heading">4.2 Authorised Representatives</p>
+                <p>You may authorise a representative to manage your account on your behalf by notifying us in writing. You remain fully responsible for all actions taken by any authorised representative. You must notify us promptly if you revoke any such authorisation. We will deal with your representative's requests in accordance with our obligations under the Code, including the agent authorisation requirements in clauses 11.32E to 11.32EF of the Code.</p>
+                <p class="terms-sub-heading">4.3 Access to Your Consumption Data</p>
+                <p>You have the right to request information about your electricity consumption at any ICP at which we supply or have supplied you in the last 24 months. We will provide the requested data within 5 Business Days of receiving your request, at no charge (subject to clause 4.4). We will notify you in writing at least once each calendar year of your right to make this request.</p>
+                <p class="terms-sub-heading">4.4 Consumption Data — Fees</p>
+                <p>We will not charge a fee for responding to consumption data requests. However, if you make more than 12 requests in any 12-month period prior to 1 June 2026, we may impose a reasonable charge for additional requests in that period. From 1 June 2026, the fee threshold may change in accordance with any amendment to clause 11.32B of the Code.</p>
+                <p class="terms-sub-heading">4.5 Data Security</p>
+                <p>We will verify your identity before providing consumption data and will ensure that information is provided only to you or your authorised agent, in accordance with clause 11.32D of the Code and the Privacy Act 2020.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-4">
+              <button class="terms-q" onclick="toggleTerms('general-4')">
+                <span>5. Pricing and Plans</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">5.1 Pricing Plan</p>
+                <p>Electricity is supplied at the rates and charges set out in your Pricing Plan. All available plans are published at www.cnergy.co.nz.</p>
+                <p class="terms-sub-heading">5.2 Rate Changes</p>
+                <p>We will give you at least 1 month's written notice of any rate change. Where a change results in a total increase of 5% or more, or is otherwise material, we will notify you individually and provide the reason for the change.</p>
+                <p class="terms-sub-heading">5.3 Plan Changes</p>
+                <p>If you wish to change to a different plan and you meet the eligibility criteria, we will apply the change within 30 days of receiving your request.</p>
+                <p class="terms-sub-heading">5.4 Electricity Plan Comparison</p>
+                <p>You can compare electricity plans from different retailers at the Electricity Authority's plan comparison website. The current address is published on the Electricity Authority's website at www.ea.govt.nz. We will provide you with information about this comparison resource at least once every calendar year, and also on our website and in communications about your billing or plan terms.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-5">
+              <button class="terms-q" onclick="toggleTerms('general-5')">
+                <span>6. Metering</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">6.1 Metering Equipment</p>
+                <p>All metering equipment at your property is owned and maintained by a metering equipment provider appointed by us. You must not interfere with or damage any metering equipment.</p>
+                <p class="terms-sub-heading">6.2 Meter Readings</p>
+                <p>We will read your meter at intervals consistent with your billing frequency. We may use actual reads, remote reads from your smart meter, or estimates. If an estimate is used, we will reconcile against an actual read at the earliest practicable opportunity.</p>
+                <p class="terms-sub-heading">6.3 Meter Faults</p>
+                <p>If you suspect your meter is faulty, contact us immediately. We will investigate and, if a fault is confirmed, correct any affected charges.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-6">
+              <button class="terms-q" onclick="toggleTerms('general-6')">
+                <span>7. Billing and Payment</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">7.1 Invoices</p>
+                <p>We will send invoices to your registered email address at the frequency set out in your Pricing Plan. Each invoice will include your ICP identifier, clearly labelled 'ICP'.</p>
+                <p class="terms-sub-heading">7.2 Payment</p>
+                <p>Payment is due by the date shown on your invoice. You must pay by one of the methods available on our website. If you have difficulty paying, please contact us as soon as possible.</p>
+                <p class="terms-sub-heading">7.3 Payment Methods and Surcharges</p>
+                <p>We accept payment by direct debit, bank transfer, and credit/debit card. A surcharge of up to 2% (inclusive of GST) applies to credit and debit card payments. This surcharge will be clearly disclosed at the point of payment selection. If a direct debit or card payment is dishonoured, the unpaid amount remains your liability and we may pass on any reasonable dishonour fees.</p>
+                <p class="terms-sub-heading">7.4 Back-Billing</p>
+                <p>We will not charge you for electricity consumed more than 6 months before the date of the invoice, regardless of the reason for the delay. If we identify that we have under-charged you due to any cause, we will notify you before issuing any corrective invoice and work with you on a reasonable repayment arrangement where the amount is material.</p>
+                <p class="terms-sub-heading">7.5 Disputed Invoices</p>
+                <p>If you believe an invoice is incorrect, contact us promptly with the reasons. We will investigate and respond within a reasonable time. You are not required to pay the disputed portion while the dispute is being investigated in good faith, but you must pay any undisputed amount by the due date.</p>
+                <p class="terms-sub-heading">7.6 GST</p>
+                <p>All charges are stated inclusive of GST unless otherwise indicated.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-7">
+              <button class="terms-q" onclick="toggleTerms('general-7')">
+                <span>8. Switching and Termination</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">8.1 Your Right to Switch</p>
+                <p>You may switch to another electricity retailer at any time, subject to any minimum term in your Pricing Plan. We will cooperate fully with the switching process in accordance with the Code.</p>
+                <p class="terms-sub-heading">8.2 Notice of Termination</p>
+                <p>If you wish to terminate your agreement without switching to another retailer (for example, on vacating a property), please notify us as soon as possible. You remain liable for all electricity consumed at your ICP until the agreement is formally terminated.</p>
+                <p class="terms-sub-heading">8.3 Our Right to Terminate</p>
+                <p>We may terminate this Agreement by giving you reasonable written notice. Before terminating for non-payment, we will follow the disconnection process set out in your Specific Terms. We will not terminate this Agreement in a way that unfairly disadvantages you.</p>
+                <p class="terms-sub-heading">8.4 Switch Protected Period</p>
+                <p>Once you have agreed to switch to another retailer, we will not contact you to persuade you to remain with us or switch back, except as permitted by clause 11.15AB of the Code (for example, to advise you of any termination fees, to respond to administrative queries, or to respond to a question you raise with us).</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-8">
+              <button class="terms-q" onclick="toggleTerms('general-8')">
+                <span>9. Assignment of Contract by the Electricity Authority</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">9.1 EA Assignment Right</p>
+                <p>In accordance with clause 11.15B of the Code, the terms of this Agreement permit the following, and these provisions are expressed to be for the benefit of the Electricity Authority for the purposes of subpart 1 of Part 2 of the Contract and Commercial Law Act 2017:</p>
+                <p>• The Authority may assign the rights and obligations of Cnergy under this Agreement to another trader if Cnergy commits an event of default under clauses 14.41(1)(a), (b), (f), (h) or (i) of the Code, or if Cnergy as retailer commits an event of default under clause 14.41(1)(j) of the Code.</p>
+                <p>• On any such assignment, the terms of the assigned contract may be amended to the standard terms that the recipient trader would normally have offered to you immediately before the event of default occurred, or to such other terms more advantageous to you as the recipient trader and the Authority may agree.</p>
+                <p>• On any such assignment, the terms of the assigned contract may be amended to include a minimum term in respect of which you may be required to pay an amount for early termination.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-9">
+              <button class="terms-q" onclick="toggleTerms('general-9')">
+                <span>10. Privacy and Personal Information</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">10.1 Collection and Use</p>
+                <p>We collect and use your personal information to provide electricity services, manage your account, process payments, comply with our legal obligations, and communicate with you about your supply. We will not use your personal information for any other purpose without your consent, except as required by law.</p>
+                <p class="terms-sub-heading">10.2 Disclosure</p>
+                <p>We may disclose your personal information to network companies, metering providers, credit agencies, and other parties as necessary to provide our services or as required by law or the Code. A list of key service providers who may receive your information is set out in the Contact Us section below.</p>
+                <p class="terms-sub-heading">10.3 Retention</p>
+                <p>We retain personal information only for as long as necessary for the purpose for which it was collected, or as required by law. Financial and transaction records are generally retained for 7 years to meet tax and accounting obligations. Other personal information is held for shorter periods appropriate to its purpose.</p>
+                <p class="terms-sub-heading">10.4 Your Rights</p>
+                <p>You have rights under the Privacy Act 2020 to access and correct your personal information. Contact us at info@cnergy.co.nz to make a request.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-10">
+              <button class="terms-q" onclick="toggleTerms('general-10')">
+                <span>11. Complaints and Disputes</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">11.1 Our Complaints Process</p>
+                <p>If you have a complaint, please contact us first at info@cnergy.co.nz. We will acknowledge your complaint promptly and work to resolve it fairly and as quickly as possible.</p>
+                <p class="terms-sub-heading">11.2 Utilities Disputes</p>
+                <p>If we are unable to resolve your complaint to your satisfaction, you may refer the matter to Utilities Disputes Ltd, the independent dispute resolution scheme approved under the Electricity Industry Act 2010. Utilities Disputes is free to consumers.</p>
+                <p>Utilities Disputes Ltd: 0800 22 33 40 | www.utilitiesdisputes.co.nz</p>
+                <p>Information about the Utilities Disputes scheme is also available on our website and will be provided in communications about your billing or plan terms, and when we respond to any query from you.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-11">
+              <button class="terms-q" onclick="toggleTerms('general-11')">
+                <span>12. Liability</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">12.1 General Limitation</p>
+                <p>To the extent permitted by law, our liability to you for any loss or damage arising from or in connection with this Agreement or the supply of electricity is limited to NZ$10,000 per event, and only in respect of direct physical loss or damage caused by our proven negligence or wilful default.</p>
+                <p class="terms-sub-heading">12.2 Consumer Protection Laws</p>
+                <p>Nothing in this clause 12 limits or excludes any right or remedy you may have under the Consumer Guarantees Act 1993, the Fair Trading Act 1986, or any other applicable consumer protection legislation that cannot lawfully be excluded or limited. For residential customers, the Consumer Guarantees Act 1993 applies in full. For business customers who have agreed in writing to exclude the Consumer Guarantees Act 1993, that exclusion applies only to the extent permitted by law.</p>
+                <p class="terms-sub-heading">12.3 Consequential Loss</p>
+                <p>Subject to clause 12.2, neither party is liable to the other for any indirect, consequential, special, or punitive loss or damage.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-12">
+              <button class="terms-q" onclick="toggleTerms('general-12')">
+                <span>13. General Provisions</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">13.1 Governing Law</p>
+                <p>This Agreement is governed by the laws of New Zealand. Any disputes that cannot be resolved through our complaints process or Utilities Disputes are subject to the jurisdiction of the New Zealand courts.</p>
+                <p class="terms-sub-heading">13.2 Amendments</p>
+                <p>We may amend these General Terms from time to time. We will give you at least 1 month's written notice of any material change. Your continued use of our service after the effective date of any change constitutes acceptance of the amended terms, unless you notify us that you do not accept the change, in which case you may terminate this Agreement without penalty.</p>
+                <p class="terms-sub-heading">13.3 Waiver</p>
+                <p>A failure or delay by either party to exercise any right under this Agreement does not operate as a waiver of that right.</p>
+                <p class="terms-sub-heading">13.4 Severability</p>
+                <p>If any provision of this Agreement is found to be invalid, unlawful, or unenforceable, that provision will be severed and the remaining provisions will continue in full force.</p>
+                <p class="terms-sub-heading">13.5 Entire Agreement</p>
+                <p>This Agreement constitutes the entire agreement between us in relation to the supply of electricity and supersedes all prior representations, agreements, and understandings.</p>
+                <p class="terms-sub-heading">13.6 Regulatory Compliance</p>
+                <p>This Agreement is subject to the Electricity Industry Act 2010, the Code, and all other applicable New Zealand legislation and regulations. In the event of any conflict between this Agreement and any applicable law or Code requirement, the law or Code requirement prevails.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="general-13">
+              <button class="terms-q" onclick="toggleTerms('general-13')">
+                <span>Contact Us</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Email: info@cnergy.co.nz &nbsp;|&nbsp; Website: www.cnergy.co.nz<br>
+                Network Company (Outages): Vector Limited — 0508 832 867 | www.vector.co.nz<br>
+                Complaints &amp; Disputes: Utilities Disputes Ltd — 0800 22 33 40 | www.utilitiesdisputes.co.nz</p>
+
+                <p class="terms-sub-heading" style="margin-top: 20px">Key Service Providers</p>
+                <p>The following third parties may collect your personal information from us, or receive it from us, in connection with the services we provide. We make reasonable efforts to keep this list current, but it may not reflect all providers at all times.</p>
+
+                <p class="ksp-section-title">Industry Participants</p>
+                <table class="ksp-table">
+                  <tr><td>Lines Companies</td><td>Contact details for all lines companies are available on the Electricity Authority's website at <a href="https://register.ea.govt.nz/" target="_blank">register.ea.govt.nz</a>.</td></tr>
+                  <tr><td>Previous Retailer</td><td>Contact details for all electricity retailers are available on the Electricity Authority's website at <a href="https://register.ea.govt.nz/" target="_blank">register.ea.govt.nz</a>.</td></tr>
+                  <tr><td>Intellihub</td><td>Website: <a href="https://www.intellihub.com.au/" target="_blank">www.intellihub.com.au</a></td></tr>
+                  <tr><td>Bluecurrent NZ Limited</td><td>Website: <a href="https://bluecurrent.co.nz/" target="_blank">bluecurrent.co.nz</a><br>Phone: 0800 661 212</td></tr>
+                </table>
+
+                <p class="ksp-section-title">Dispute Resolution Schemes</p>
+                <table class="ksp-table">
+                  <tr><td>Utilities Disputes Ltd (UDL)</td><td>Website: <a href="http://www.udl.co.nz/" target="_blank">www.udl.co.nz</a><br>Phone: 0800 22 33 40<br>Email: info@udl.co.nz<br>Mail: Freepost 1926 82, PO Box 5875, Wellington 6140</td></tr>
+                  <tr><td>Disputes Tribunal</td><td>Website: <a href="http://www.disputestribunal.govt.nz/" target="_blank">www.disputestribunal.govt.nz</a><br>Phone: 0800 COURTS (0800 268 787)</td></tr>
+                </table>
+
+                <p class="ksp-section-title">Government Agencies</p>
+                <table class="ksp-table">
+                  <tr><td>Electricity Authority</td><td>Website: <a href="http://www.ea.govt.nz/" target="_blank">www.ea.govt.nz</a><br>Privacy Notice: <a href="http://www.ea.govt.nz/privacy-notice/" target="_blank">www.ea.govt.nz/privacy-notice</a><br>Mail: PO Box 10041, Wellington 6143</td></tr>
+                </table>
+                <p class="ksp-note">This list may be updated from time to time. Please refer to the current version of these terms on our website for the most up-to-date information.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 RESIDENTIAL TERMS -->
+      <div class="terms-doc" id="terms-doc-residential">
+        <button class="terms-doc-header" onclick="toggleDoc('residential')">
+          <div class="terms-doc-header-left">
+            <div class="terms-doc-num">02</div>
+            <div>
+              <div class="terms-doc-title">Residential Terms and Conditions</div>
+              <div class="terms-doc-sub">Residential Customers · Version 1.1 · May 2026</div>
+            </div>
+          </div>
+          <span class="terms-doc-arrow">›</span>
+        </button>
+        <div class="terms-doc-body">
+          <div class="terms-accordion">
+
+            <div class="terms-item" id="residential-0">
+              <button class="terms-q" onclick="toggleTerms('residential-0')">
+                <span>About These Terms</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>These Residential Terms apply specifically to residential customers and supplement the Cnergy General Terms and Conditions. In the event of any conflict, these Residential Terms prevail. These terms include consumer protections required by the Electricity Industry Participation Code 2010, the Consumer Care Obligations (Part 11A, effective 1 April 2025), and the Consumer Guarantees Act 1993.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-1">
+              <button class="terms-q" onclick="toggleTerms('residential-1')">
+                <span>R1. Signing Up</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">R1.1 Eligibility</p>
+                <p>To apply for residential electricity supply from Cnergy, you must: • have a property within our Service Area (Auckland, Wellsford to Papakura); • hold a valid email address; • be the owner, tenant, or authorised occupier of that property; and • be at least 18 years old, or otherwise have legal capacity to enter a binding contract.</p>
+                <p class="terms-sub-heading">R1.2 Applying</p>
+                <p>You can apply online at www.cnergy.co.nz or by emailing info@cnergy.co.nz. We will respond within 2 Business Days. We may accept or decline any application at our sole discretion.</p>
+                <p class="terms-sub-heading">R1.3 Joint Accounts</p>
+                <p>Where more than one person is named on an account, each person is individually and jointly (jointly and severally) liable for all obligations under this Agreement.</p>
+                <p class="terms-sub-heading">R1.4 Identity and Credit Checks</p>
+                <p>We may request personal information, including for the purpose of conducting a credit check. Where a credit check is undertaken, we will inform you that a check is being conducted and the agency being used.</p>
+                <p class="terms-sub-heading">R1.5 Security Deposit</p>
+                <p>Where your payment history or credit profile indicates additional security is required, we may ask you to pay a security deposit. We will tell you the reason and amount before requesting payment. The deposit will not exceed the amount of your two most recent monthly bills. No interest will accrue on the deposit. We will review the deposit after 12 months and refund it if your payment obligations have been met.</p>
+                <p class="terms-sub-heading">R1.6 Moving In</p>
+                <p>If you move into a property where Cnergy is the existing retailer and begin using electricity without contacting us, you are responsible for all electricity consumed from the date you move in. If you move into a property where the meter has been disconnected, contact us before moving in to arrange reconnection. A reconnection fee will apply.</p>
+                <p class="terms-sub-heading">R1.7 Unsolicited Sales — Cooling-Off Right</p>
+                <p>If you signed up following an unsolicited approach (door-to-door, telemarketing, or unsolicited phone call), you have the right to cancel your application within 5 Business Days of receiving written confirmation of your supply. To cancel, email info@cnergy.co.nz within that period. No penalty applies.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-2">
+              <button class="terms-q" onclick="toggleTerms('residential-2')">
+                <span>R2. Pricing Plan</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">R2.1 Your Plan</p>
+                <p>Electricity is supplied at the rates and charges set out in your Pricing Plan. Available plans are published at www.cnergy.co.nz. We will give you at least 1 month's written notice of any rate change. Where a change results in a total increase of 5% or more, or is otherwise material, we will notify you individually with the reason for the change.</p>
+                <p class="terms-sub-heading">R2.2 Better Plan Advice</p>
+                <p>In accordance with the Electricity Authority's requirements, we will advise you at least once each calendar year if a more suitable plan appears to be available based on your usage profile. This advice will be provided at the time of your annual Consumer Care Obligations check-in. If a better plan is identified, you may switch to that plan at no charge and without penalty.</p>
+                <p class="terms-sub-heading">R2.3 Electricity Plan Comparison Site</p>
+                <p>You can compare electricity plans from different retailers at the Electricity Authority's electricity plan comparison website. We will: • publish a link to the comparison site clearly and prominently on our website; • include information about the comparison site on or with each invoice and any communication about your billing or plan terms; and • notify you about the comparison site at least once every calendar year.</p>
+                <p>The current comparison site address is published on the Electricity Authority's website at www.ea.govt.nz. If the Authority changes the address, we will update our materials as soon as reasonably possible and no later than 3 months after the change is notified.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-3">
+              <button class="terms-q" onclick="toggleTerms('residential-3')">
+                <span>R3. Consumer Care Obligations</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Cnergy complies fully with the Consumer Care Obligations under Part 11A of the Electricity Industry Participation Code 2010 (effective 1 April 2025). Our full Consumer Care Policy is published at www.cnergy.co.nz.</p>
+                <p class="terms-sub-heading">R3.1 Payment Support Plans</p>
+                <p>If you are experiencing genuine financial hardship or difficulty paying your bills, please contact us as soon as possible at info@cnergy.co.nz. We will: • work with you to arrange a suitable payment plan; • help identify available government assistance or community support; and • not disconnect supply without first making genuine efforts to engage with you.</p>
+                <p class="terms-sub-heading">R3.2 Identifying Payment Difficulty</p>
+                <p>We monitor customer accounts for signs of payment difficulty, including where a customer fails to pay an invoice for more than one billing cycle in a 6-month period. If we identify potential difficulty, we will proactively contact you to offer support before taking any enforcement action.</p>
+                <p class="terms-sub-heading">R3.3 Unexpected Consumption Increases</p>
+                <p>If you are on a payment support plan and we identify a significant and sudden unexplained increase in your consumption, we will notify you of the change to help you avoid bill shock and, where appropriate, advise you of plans that may reduce your bills.</p>
+                <p class="terms-sub-heading">R3.4 Annual Check-In</p>
+                <p>We will conduct an annual Consumer Care check-in with you to review your circumstances, confirm your contact details, and advise you of any better plan options and other relevant rights, including your right to access your consumption data and the electricity plan comparison site.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-4">
+              <button class="terms-q" onclick="toggleTerms('residential-4')">
+                <span>R4. Medically Dependent Consumers</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>IMPORTANT: If you or any permanent resident at the supply address is a medically dependent consumer (a person who relies on electricity to maintain life or avoid serious harm), you MUST notify Cnergy immediately. We will NOT disconnect supply where we are aware a medically dependent consumer resides at your property. You must provide a completed Medically Dependent Consumer Status Confirmation form signed by a registered health professional. The form is available from the Electricity Authority at www.ea.govt.nz.</p>
+                <p>Cnergy's obligation not to disconnect supply where a medically dependent consumer is present is absolute and applies regardless of any payment difficulty or other issue with your account.</p>
+                <p>You remain responsible for maintaining appropriate backup power and emergency preparedness at all times, including during planned and unplanned outages. This responsibility to maintain backup power is an additional precaution and does not in any way reduce or qualify Cnergy's obligation not to disconnect supply to a medically dependent consumer.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-5">
+              <button class="terms-q" onclick="toggleTerms('residential-5')">
+                <span>R5. Disconnection Process for Non-Payment</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Before disconnecting supply for non-payment, we will follow the process required by the Consumer Care Obligations (Part 11A of the Code):</p>
+                <p>Stage: Invoice issued → Invoice sent to your registered email address. Stage: Overdue date → Overdue notice sent immediately. Stage: Days 1–21 after overdue → At least 4 contact attempts using your registered contact details. Stage: Day 28 after invoice issue → Formal disconnection warning issued (earliest). Stage: Day 44 after invoice issue → Final disconnection notice with 24 hours' written notice (earliest).</p>
+                <p>Disconnection will NOT occur: • On a Friday, public holiday, or the day before a public holiday. • Where a medically dependent consumer resides at your property and we are aware of this. • If disconnection would create a risk to health or safety. • Where it is not reasonably practicable for you to make alternative arrangements.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-6">
+              <button class="terms-q" onclick="toggleTerms('residential-6')">
+                <span>R6. Debt Collection</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>If you do not pay an invoice by the due date, we may refer the outstanding debt to a third-party debt collection agency. You will be responsible for all reasonable collection costs. If a direct debit or card payment is dishonoured, the unpaid amount remains your liability.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-7">
+              <button class="terms-q" onclick="toggleTerms('residential-7')">
+                <span>R7. Your Consumption Data</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">R7.1 Right to Request Data</p>
+                <p>You have the right to request information about your electricity consumption at any ICP at which we have supplied you in the last 24 months. This right applies whether you are a current customer or a former customer within the 24-month period. We will provide the information within 5 Business Days of your request, at no charge (subject to the fee threshold in clause 4.4 of the General Terms).</p>
+                <p class="terms-sub-heading">R7.2 Annual Notification</p>
+                <p>We will notify you in writing at least once each calendar year that you have the right to request your consumption data from us.</p>
+                <p class="terms-sub-heading">R7.3 Authorised Agents</p>
+                <p>You may authorise an agent to request consumption data on your behalf. We will deal with requests from authorised agents in accordance with clauses 11.32E to 11.32EF of the Code and the Privacy Act 2020. You can revoke an agent's authority at any time by notifying us in writing.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-8">
+              <button class="terms-q" onclick="toggleTerms('residential-8')">
+                <span>R8. Consumer Guarantees Act</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>As a residential consumer, your rights under the Consumer Guarantees Act 1993 apply in full. Nothing in this Agreement limits or excludes any right or remedy you may have under that Act or any other applicable consumer protection legislation.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="residential-9">
+              <button class="terms-q" onclick="toggleTerms('residential-9')">
+                <span>R9. Dispute Resolution</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">R9.1 Our Complaints Process</p>
+                <p>If you have a complaint, please contact us first at info@cnergy.co.nz. We will acknowledge your complaint promptly and work to resolve it fairly.</p>
+                <p class="terms-sub-heading">R9.2 Utilities Disputes</p>
+                <p>If we cannot resolve your complaint to your satisfaction, you may refer it to Utilities Disputes Ltd, the independent dispute resolution scheme approved under the Electricity Industry Act 2010. Utilities Disputes is free to you as a consumer.</p>
+                <p>Utilities Disputes Ltd: 0800 22 33 40 | www.utilitiesdisputes.co.nz</p>
+                <p>Information about Utilities Disputes is published on our website and will be included in or with each invoice, each communication about your billing or plan terms, and each response to any query you raise with us.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 SMALL BUSINESS TERMS -->
+      <div class="terms-doc" id="terms-doc-business">
+        <button class="terms-doc-header" onclick="toggleDoc('business')">
+          <div class="terms-doc-header-left">
+            <div class="terms-doc-num">03</div>
+            <div>
+              <div class="terms-doc-title">Small Business Terms and Conditions</div>
+              <div class="terms-doc-sub">Small Business Customers · Version 1.1 · May 2026</div>
+            </div>
+          </div>
+          <span class="terms-doc-arrow">›</span>
+        </button>
+        <div class="terms-doc-body">
+          <div class="terms-accordion">
+
+            <div class="terms-item" id="business-0">
+              <button class="terms-q" onclick="toggleTerms('business-0')">
+                <span>About These Terms</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>These Small Business Terms apply to small business customers and supplement the Cnergy General Terms and Conditions. In the event of any conflict, these Small Business Terms prevail. A 'small business customer' means a customer acquiring electricity primarily for business purposes at a single connection point with an annual consumption below the threshold specified in the Electricity Industry Participation Code 2010. Customers at or above that threshold are subject to the Large Business Terms.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-1">
+              <button class="terms-q" onclick="toggleTerms('business-1')">
+                <span>B1. Signing Up</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">B1.1 Eligibility</p>
+                <p>To apply for small business electricity supply from Cnergy, you must: • have a property within our Service Area (Auckland, Wellsford to Papakura); • hold a valid email address; • be the owner or authorised representative of the business at that property; and • have authority to enter into a binding contract on behalf of the business.</p>
+                <p class="terms-sub-heading">B1.2 Applying</p>
+                <p>You can apply online at www.cnergy.co.nz or by emailing info@cnergy.co.nz. We will respond within 2 Business Days. We may accept or decline any application at our sole discretion.</p>
+                <p class="terms-sub-heading">B1.3 Identity, Credit Checks, and Personal Guarantee</p>
+                <p>We may conduct a credit check in connection with your application. We may also require a personal guarantee from a director or principal of the business as a condition of supply.</p>
+                <p class="terms-sub-heading">B1.5 Joint and Several Liability</p>
+                <p>Where more than one person is named on an account or has provided a personal guarantee, each person is individually and jointly liable for all obligations under this Agreement.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-2">
+              <button class="terms-q" onclick="toggleTerms('business-2')">
+                <span>B2. Pricing Plan</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">B2.1 Your Plan</p>
+                <p>Electricity is supplied at the rates and charges set out in your Pricing Plan. Available business plans are published at www.cnergy.co.nz. We will give you at least 1 month's written notice of any rate change. Where a change results in a total increase of 5% or more, or is otherwise material, we will notify you individually.</p>
+                <p class="terms-sub-heading">B2.2 Plan Changes</p>
+                <p>If you wish to change to a different plan and you meet the eligibility criteria, we will apply the change within 30 days of receiving your request.</p>
+                <p class="terms-sub-heading">B2.3 Better Plan Advice</p>
+                <p>We will advise you at least once each calendar year if a more suitable plan appears to be available based on your usage profile. This advice will be provided at the time of your annual Consumer Care Obligations check-in. If a better plan is identified, you may switch to that plan at no charge and without penalty.</p>
+                <p class="terms-sub-heading">B2.4 Electricity Plan Comparison Site</p>
+                <p>Where your ICP is classified as a residential-equivalent small business connection under the Code, we will provide you with information about the Electricity Authority's electricity plan comparison website. We will publish a link to the comparison site on our website and notify you about it at least once every calendar year. The current site address is published at www.ea.govt.nz.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-3">
+              <button class="terms-q" onclick="toggleTerms('business-3')">
+                <span>B3. Consumer Care Obligations</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Cnergy's Consumer Care Obligations (Part 11A of the Code) apply to small business customers as defined in the Code. We will: • monitor your account for signs of payment difficulty and contact you proactively where we identify potential issues; • work with you to arrange a suitable payment arrangement if you are experiencing genuine financial difficulty; • conduct an annual Consumer Care check-in to review your circumstances, confirm your contact details, and advise you of any better plan options and relevant rights including your right to access your consumption data; and • follow the disconnection process set out in Section B5 before disconnecting supply for non-payment.</p>
+                <p>Please contact us as soon as possible at info@cnergy.co.nz if you are experiencing financial difficulty.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-4">
+              <button class="terms-q" onclick="toggleTerms('business-4')">
+                <span>B4. Medically Dependent Consumers on Business Premises</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>If any person at the supply address relies on electricity to maintain life or avoid serious harm (for example, a person receiving care at a healthcare facility), you MUST notify Cnergy immediately. We will comply with all medically dependent consumer obligations under the Code and will not disconnect supply where we are aware a medically dependent consumer is present. A completed confirmation form signed by a registered health professional must be provided (form available at www.ea.govt.nz).</p>
+                <p>Cnergy's obligation not to disconnect supply where a medically dependent consumer is present applies regardless of any payment difficulty or other issue with your account. Any obligation on you to maintain backup power is an additional safety precaution and does not in any way reduce or qualify Cnergy's obligation not to disconnect supply.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-5">
+              <button class="terms-q" onclick="toggleTerms('business-5')">
+                <span>B5. Disconnection Process for Non-Payment</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Before disconnecting supply for non-payment, we will follow the Consumer Care Obligations process:</p>
+                <p>Stage: Invoice issued → Invoice sent to your registered email address. Stage: Overdue date → Overdue notice sent immediately. Stage: Days 1–21 after overdue → At least 4 contact attempts using your registered contact details. Stage: Day 28 after invoice issue → Formal disconnection warning issued (earliest). Stage: Day 44 after invoice issue → Final disconnection notice with 24 hours' written notice (earliest).</p>
+                <p>Disconnection will NOT occur on a Friday, public holiday, or the day before a public holiday, or where disconnection would create a risk to health or safety.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-6">
+              <button class="terms-q" onclick="toggleTerms('business-6')">
+                <span>B6. Debt Collection</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>If you do not pay an invoice by the due date, we may refer the outstanding debt to a third-party debt collection agency. You (and any personal guarantor) will be responsible for all reasonable collection costs, including agency fees and legal costs. If a direct debit or card payment is dishonoured, the unpaid amount remains your liability.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-7">
+              <button class="terms-q" onclick="toggleTerms('business-7')">
+                <span>B7. Your Consumption Data</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">B7.1 Right to Request Data</p>
+                <p>You have the right to request information about your electricity consumption at any ICP at which we have supplied you in the last 24 months. This right applies whether you are a current customer or a former customer within the 24-month period. We will provide the information within 5 Business Days of your request, at no charge (subject to the fee threshold in clause 4.4 of the General Terms).</p>
+                <p class="terms-sub-heading">B7.2 Annual Notification</p>
+                <p>We will notify you in writing at least once each calendar year that you have the right to request your consumption data from us.</p>
+                <p class="terms-sub-heading">B7.3 Authorised Agents</p>
+                <p>You may authorise an agent to request consumption data on your behalf. We will deal with requests from authorised agents in accordance with clauses 11.32E to 11.32EF of the Code and the Privacy Act 2020.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-8">
+              <button class="terms-q" onclick="toggleTerms('business-8')">
+                <span>B8. Consumer Guarantees Act</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p>Business customer exclusion: If you are acquiring electricity primarily for business purposes, you agree (to the extent permitted by law) that the Consumer Guarantees Act 1993 does not apply to that supply. However, nothing in this clause limits rights that cannot lawfully be excluded. If you are in any doubt about whether you qualify as a business customer for these purposes, please contact us.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-9">
+              <button class="terms-q" onclick="toggleTerms('business-9')">
+                <span>B9. Dispute Resolution</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">B9.1 Our Complaints Process</p>
+                <p>If you have a complaint, please contact us first at info@cnergy.co.nz. We will acknowledge your complaint promptly and work to resolve it fairly.</p>
+                <p class="terms-sub-heading">B9.2 Utilities Disputes</p>
+                <p>If we cannot resolve your complaint to your satisfaction, you may refer it to Utilities Disputes Ltd, the independent dispute resolution scheme approved under the Electricity Industry Act 2010.</p>
+                <p>Utilities Disputes Ltd: 0800 22 33 40 | www.utilitiesdisputes.co.nz</p>
+                <p>Information about Utilities Disputes is published on our website and will be included in or with each invoice, each communication about your billing or plan terms, and each response to any query you raise with us.</p>
+              </div></div>
+            </div>
+
+            <div class="terms-item" id="business-10">
+              <button class="terms-q" onclick="toggleTerms('business-10')">
+                <span>B10. Additional Business Obligations</span><span class="terms-icon">+</span>
+              </button>
+              <div class="terms-body"><div class="terms-body-inner">
+                <p class="terms-sub-heading">B10.1 Authorised Representatives</p>
+                <p>If you authorise a representative to manage your account on your behalf, you remain fully responsible for all actions taken by that representative. You must notify us promptly if an authorisation is revoked. We will deal with your representative's requests in accordance with the Code, including the agent authorisation requirements in clauses 11.32E to 11.32EF of the Code.</p>
+                <p class="terms-sub-heading">B10.2 Change of Business Ownership</p>
+                <p>If ownership of your business changes, you must notify us at least 5 Business Days before the effective date of the change. The incoming owner must apply for a new account. You remain liable for all electricity consumed up to the date of transfer.</p>
+                <p class="terms-sub-heading">B10.3 Multiple Sites</p>
+                <p>If you receive supply at more than one property, a separate agreement applies to each ICP. We may consolidate invoices by arrangement, but each ICP is individually billed and each supply address is subject to these terms.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .terms-wrap -->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div class="footer-logo">C<em>+</em>nergy</div>
+            <div class="footer-tagline">
+              Stack Power Ltd T/A C+nergy<br>
+              뉴질랜드 전기 리테일러 라이선스 보유 · Auckland 서비스 지역
+            </div>
+          </div>
+          <div class="footer-links">
+            <a href="mailto:support@cnergy.co.nz">고객 지원</a>
+            <a href="terms.html" class="active">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">FAQ</a>
+          </div>
+        </div>
+        <div class="footer-copy">
+          © 2026 Stack Power Ltd T/A C+nergy. All rights reserved.<br>
+          전기 공급 관련 불만은 Utilities Disputes Ltd (0800 22 33 40 · www.utilitiesdisputes.co.nz)에 접수 가능합니다.<br>
+          현재 서비스 지역: Auckland (Vector 네트워크, Wellsford ~ Papakura). 요금은 지역·요금제에 따라 상이할 수 있습니다.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleDoc(id) {
+        const doc = document.getElementById('terms-doc-' + id);
+        const isOpen = doc.classList.contains('open');
+        document.querySelectorAll('.terms-doc').forEach(d => d.classList.remove('open'));
+        if (!isOpen) doc.classList.add('open');
+      }
+
+      function toggleTerms(id) {
+        const item = document.getElementById(id);
+        const isOpen = item.classList.contains('open');
+        const siblings = item.closest('.terms-accordion').querySelectorAll('.terms-item');
+        siblings.forEach(s => s.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      }
+
+      // Nav scroll style
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 20 ? '#e8edf3' : 'transparent';
+      }, { passive: true });
+    </script>
+  </body>
+</html>
